@@ -1,0 +1,47 @@
+<script src="vue.js"></script>
+<script src="../out/src/vue4ts.js"></script>
+<script src="../out/demo/demo.js"></script>
+
+<!-- <script id="appTemplate" type="x-template">
+    
+</script> -->
+
+<script id="boxTemplate" type="x-template">
+        <div class="box"> 
+            <div><strong>{{article.title}}</strong></div>
+            <div>{{article.summary}}</div>
+        </div>
+    </script>
+
+<div id="container">
+    <div v-bind:style="{background: isAlert ? 'red' : 'inherit'}">
+        <p>This is the vue.js main application:</p>
+
+        <input type="checkbox" id="checkbox" v-model="isAlert" /> <label for="checkbox">Alert</label>
+
+        <div>
+                <button v-on:click="doTest()">Test</button>
+
+                <div>{{testMessage}}</div>
+        </div>
+
+        <hr />
+        <div>
+            Child components: {{articleCount}}
+
+            <button v-on:click="addArticle">add</button>
+            
+            <div v-for="article in articles">
+                <box v-bind:article="article"></box>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .box {
+        border: 1px solid silver;
+        padding: 3px;
+        margin-bottom: 5px;
+    }
+</style>
